@@ -40,4 +40,8 @@ rm app/views/layouts/application.html.erb
 rake haml:erb2haml
 gem install mysql2
 edit config/database.yml appropirately
-
+gem install zeus
+rails generate model domain name:string
+rake db:migrate
+rails generate migration AddDomainToSites domain:references
+rake db:migrate

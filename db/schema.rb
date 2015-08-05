@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805193213) do
+ActiveRecord::Schema.define(version: 20150805210526) do
+
+  create_table "domains", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "sites", force: :cascade do |t|
     t.string   "subdomain",  limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "domain_id",  limit: 4
   end
 
+  add_index "sites", ["domain_id"], name: "index_sites_on_domain_id", using: :btree
+
+  add_foreign_key "sites", "domains"
 end
