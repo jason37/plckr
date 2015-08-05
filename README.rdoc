@@ -1,0 +1,43 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
+
+mkdir com.plckr
+cd com.plckr
+rails new .
+bundle install
+rails generate rspec:install
+rails generate model site subdomain:string
+add to Gemfile: gem "haml-rails", "~> 0.9"
+bundle install
+rails generate haml:application_layout convert
+rm app/views/layouts/application.html.erb
+rake haml:erb2haml
+gem install mysql2
+edit config/database.yml appropirately
+
